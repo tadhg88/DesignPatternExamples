@@ -2,11 +2,22 @@
 {
     public abstract class Beverage
     {
-        public string _description = "Unknown Bev";
+        private string _description = string.Empty;
+        private Size _size = Size.Small;
 
         public virtual string Description
         {
             get { return _description; }
+        }
+
+        public virtual Size GetSize()
+        {
+            return _size;
+        }
+
+        public void SetSize(Size value)
+        {
+            _size = value;
         }
 
         public abstract double Cost();
@@ -21,7 +32,18 @@
 
         public override double Cost()
         {
-            return 1.99;
+            double cost = 1.99;
+
+            if(GetSize() == Size.Medium)
+            {
+                cost += .50;
+            }
+            else if (GetSize() == Size.Large)
+            {
+                cost += 1.00;
+            }
+
+            return cost;
         }
     }
 
@@ -34,7 +56,25 @@
 
         public override double Cost()
         {
-            return .89;
+            double cost = .89;
+
+            if (GetSize() == Size.Medium)
+            {
+                cost += .50;
+            }
+            else if (GetSize() == Size.Large)
+            {
+                cost += 1.00;
+            }
+
+            return cost;
         }
+    }
+
+    public enum Size
+    {
+        Small,
+        Medium,
+        Large
     }
 }

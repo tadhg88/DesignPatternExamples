@@ -19,9 +19,11 @@ namespace DesignPatternExamples
         {
 
             Beverage beverage = new Expresso();
+            beverage.SetSize(Size.Medium);
             Console.WriteLine(beverage.Description + " €" + beverage.Cost());
 
             Beverage houseBlend = new HouseBlend();
+            houseBlend.SetSize(Size.Medium);
             houseBlend = new Mocha(houseBlend);
             houseBlend = new Mocha(houseBlend);
             houseBlend = new Soy(houseBlend);
